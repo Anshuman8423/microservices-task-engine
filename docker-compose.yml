@@ -1,0 +1,14 @@
+services:
+
+  task-service:
+    build: .
+    container_name: task-service
+    ports:
+      - "8001:8001"
+    restart: unless-stopped
+
+  worker-service:
+    build: .
+    container_name: worker-service
+    command: python services/worker_service/worker.py
+    restart: "no"
